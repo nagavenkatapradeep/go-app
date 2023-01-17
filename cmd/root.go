@@ -50,7 +50,7 @@ var versionCmd = &cobra.Command{
 	Short: "Print the version number of Go App",
 	Long:  `All software has versions. This is Go Apps's`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("v0.1")
+		fmt.Println("v0.2")
 	},
 }
 
@@ -60,11 +60,15 @@ var removeSpecials = &cobra.Command{
 	Long: `This removes below special characters from the first argument.
 			"*", "/","-".`,
 	Run: func(cmd *cobra.Command, args []string) {
-		input := args[0]
-		output := strings.ReplaceAll(input, "*", "")
-		output = strings.ReplaceAll(output, "/", "")
-		output = strings.ReplaceAll(output, "-", "")
-		output = strings.TrimSpace(output)
-		fmt.Println(output)
+		if len(args) > 0 {
+			input := args[0]
+			output := strings.ReplaceAll(input, "*", "")
+			output = strings.ReplaceAll(output, "/", "")
+			output = strings.ReplaceAll(output, "-", "")
+			output = strings.TrimSpace(output)
+			fmt.Println(output)
+		} else {
+			fmt.Println("No Input")
+		}
 	},
 }
